@@ -1,0 +1,4 @@
+ext {
+    jwtVersion = '0.9.1'
+    modelMapperVersion = '3.1.0'
+}

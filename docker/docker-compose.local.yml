@@ -1,0 +1,11 @@
+version: '2.4'
+services:
+  postgres:
+    container_name: demo
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
