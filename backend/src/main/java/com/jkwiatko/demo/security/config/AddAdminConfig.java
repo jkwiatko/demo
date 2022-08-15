@@ -9,12 +9,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import static java.lang.String.format;
+
 @Slf4j
 @Configuration
 @AllArgsConstructor
 public class AddAdminConfig {
 
-    private static final String TEST_ADMIN_LOG = "Test admin user present in DB to login use: email='admin@gmail.com', password='admin'";
+    private static final String ADMIN_EMAIL = "admin@example.com";
+    private static final String ADMIN_PASSWORD = "admin";
+    private static final String TEST_ADMIN_LOG = "Test admin user present in DB to login use: email=%s, password=%s";
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
@@ -22,13 +26,13 @@ public class AddAdminConfig {
     @Bean
     public CommandLineRunner addTestUser() {
         return args -> {
-            if (userRepository.findByEmail("admin@gmail.com").isEmpty()) {
+            if (userRepository.findByEmail(ADMIN_EMAIL).isEmpty()) {
                 var user = new User();
-                user.setEmail("admin@gmail.com");
-                user.setPassword(passwordEncoder.encode("admin"));
+                user.setEmail(ADMIN_EMAIL);
+                user.setPassword(passwordEncoder.encode(ADMIN_PASSWORD));
                 userRepository.save(user);
             }
-            log.info(TEST_ADMIN_LOG);
+            log.info(format(TEST_ADMIN_LOG, ADMIN_EMAIL, ADMIN_PASSWORD));
         };
     }
 }
