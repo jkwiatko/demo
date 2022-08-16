@@ -5,6 +5,7 @@ import {TokenModel} from "./model/token.model";
 import {environment} from "../../environments/environment";
 import {switchMap, tap, timeout} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthService {
     return this._isLoginIn.asObservable();
   }
 
-  constructor(private client: HttpClient, private router: Router) {
+  constructor(private client: HttpClient, private router: Router, private toastr: ToastrService) {
     const token = AuthService.getLocalAccessToken();
     if (token && token.hasNotExpired()) {
       this._isLoginIn.next(true);
@@ -62,6 +63,7 @@ export class AuthService {
   addAutoLogout(expirationDuration: number) {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
+      this.toastr.info("Session has expired, please log in again :)");
     }, expirationDuration);
   }
 

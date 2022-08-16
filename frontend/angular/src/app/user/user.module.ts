@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {DialogOverviewExampleDialog, UserViewComponent} from './user-view/user-view.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {EditUserDialog, UserViewComponent} from './user-view/user-view.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -13,7 +13,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 @NgModule({
   declarations: [
     UserViewComponent,
-    DialogOverviewExampleDialog
+    EditUserDialog
   ],
   imports: [
     CommonModule,

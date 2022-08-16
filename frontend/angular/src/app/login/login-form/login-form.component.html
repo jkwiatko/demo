@@ -1,30 +1,29 @@
-<div>
-    <h1>Logowanie</h1>
-    <div>
-        <form #form="ngForm" (ngSubmit)="submit(form)">
+<div class="login-background">
+    <mat-card class="center card-size-large media-flex">
+        <div>
+            <img src="assets/img-01.png" class="login-img" alt="IMG">
+        </div>
+        <div>
+            <h1>Log in</h1>
             <div>
-
-                <div>
-                    <label>email</label>
-                    <input required ngModel #emailCtrl="ngModel" name="email">
-                </div>
-                <p *ngIf="!emailCtrl.valid && emailCtrl.touched">
-                    email is required
-                </p>
-
-                <div>
-                    <label>password</label>
-                    <input type="password" required ngModel #passwordCtrl="ngModel" name="password">
-                </div>
-                <p *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
-                    password is required
-                </p>
-
+                <form #form="ngForm" (ngSubmit)="submit(form)">
+                    <div class="input-margin">
+                        <mat-form-field appearance="fill">
+                            <mat-label>email</mat-label>
+                            <input ngModel required email maxlength="50" name="email" matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="input-margin">
+                        <mat-form-field appearance="fill" class="margin-left">
+                            <mat-label>Password</mat-label>
+                            <input ngModel required matInput name="password" maxlength="50" type="password">
+                        </mat-form-field>
+                    </div>
+                    <div class="input-margin submit-button">
+                        <button mat-flat-button type="submit" [disabled]="form.invalid" color="primary">Log in</button>
+                    </div>
+                </form>
             </div>
-
-            <div>
-                <button type="submit">Ok</button>
-            </div>
-        </form>
-    </div>
+        </div>
+    </mat-card>
 </div>

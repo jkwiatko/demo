@@ -13,6 +13,10 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
+  public getCurrentUser() : Observable<UserType> {
+    return this.http.get<UserType>(environment.api + '/users/me');
+  }
+
   public fetchUsers(): Observable<UserType[]> {
     return this.http.get<UserType[]>(environment.api + '/users');
   }

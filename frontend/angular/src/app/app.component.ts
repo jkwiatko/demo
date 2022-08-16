@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {AuthService} from "./auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   loggedIn: any;
   private authSub?: Subscription;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
   }
 
   public logout(): void {
@@ -26,5 +27,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.auth.isLoginIn.subscribe(isLoggedIn => this.loggedIn = isLoggedIn);
+  }
+
+  isNotLoginScreen() : boolean {
+    return this.router.url != '/login'
   }
 }

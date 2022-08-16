@@ -1,0 +1,55 @@
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card-size-large {
+  width: 80vw;
+  height: 60vw;
+  max-height: 90vh;
+  min-width: 400px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.input-margin {
+  margin-bottom: 1em;
+
+  &.submit-button {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.login-background {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(-135deg, #c850c0, #4158d0);;
+}
+
+@media screen and (min-width: 1024px) {
+  .media-flex {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width:720px) and (max-width: 1024px){
+  .login-img {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .login-img {
+    display: none;
+  }
+}
+
