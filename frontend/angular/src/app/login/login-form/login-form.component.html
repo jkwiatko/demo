@@ -1,0 +1,30 @@
+<div>
+    <h1>Logowanie</h1>
+    <div>
+        <form #form="ngForm" (ngSubmit)="submit(form)">
+            <div>
+
+                <div>
+                    <label>email</label>
+                    <input required ngModel #emailCtrl="ngModel" name="email">
+                </div>
+                <p *ngIf="!emailCtrl.valid && emailCtrl.touched">
+                    email is required
+                </p>
+
+                <div>
+                    <label>password</label>
+                    <input type="password" required ngModel #passwordCtrl="ngModel" name="password">
+                </div>
+                <p *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
+                    password is required
+                </p>
+
+            </div>
+
+            <div>
+                <button type="submit">Ok</button>
+            </div>
+        </form>
+    </div>
+</div>
